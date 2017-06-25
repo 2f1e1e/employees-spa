@@ -1,6 +1,7 @@
 {
   "name": "employees-spa",
   "version": "0.1.0",
+  "homepage": "https://2f1e1e.github.io/employees-spa/",
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
@@ -47,7 +48,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
