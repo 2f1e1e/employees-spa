@@ -3,6 +3,11 @@ export const addEmployee = (state) => ({
   state
 })
 
+export const editEmployee = (state) => ({
+  type: 'EDIT_EMPLOYEE',
+  state
+})
+
 export const tableSortColumn = (sort) => ({
   type: 'SORT_EMPLOYEE',
   sort

@@ -6,16 +6,6 @@ import { Redirect, withRouter } from 'react-router-dom';
 
 import Employee from '../components/Employee';
 
-const getVisibleTodos = (todos, filter) => {
-  switch (filter) {
-    case 'SHOW_ALL':
-      return todos
-    case 'SHOW_COMPLETED':
-      return todos.filter(t => t.completed)
-    case 'SHOW_ACTIVE':
-      return todos.filter(t => !t.completed)
-  }
-}
 const defaultRole = [
   {
     value: 'waiter',
@@ -36,9 +26,12 @@ const defaultRole = [
   }
 }*/
 
-const mapStateToProps = (state, ownProps) => {
-  console.log("state")
-  console.log(ownProps);
+const mapStateToProps = (state, ownProps, props) => {
+  console.log("own")
+  console.log(props);
+  if (ownProps.match.path === '/new') {
+    console.log("new entry")
+  }
   let employee = state.employees.filter(a => {
     return +a.id === +ownProps.match.params.id;
   })[0];
@@ -53,10 +46,15 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     onTodoClick: state => {
-      dispatch(action.addEmployee(state))
+      if (props.match.path === '/new') {
+        dispatch(action.addEmployee(state));
+        console.log("new entry")
+      } else {
+        dispatch(action.editEmployee(state));
+      }
       console.log("dsf")
       console.log(state)
     }

@@ -15,6 +15,7 @@ class Employee extends Component {
       isArchive: this.props.user ? this.props.user.isArchive : false,
       role: this.props.user ? this.props.user.role : 'waiter',
       errors: 'err',
+      id: this.props.user ? this.props.user.id : this.props.lastId,
       lastId: this.props.lastId
    };
   }
@@ -83,28 +84,29 @@ class Employee extends Component {
   }
 
   render() {
+    const { name, phone, birthday, role, isArchive} = this.state;
     return (
       <ul>
       <div>{this.state.errors}</div>
       <form>
         <label>
           Name:
-          <input className="form-control form-control-error" type="text" value={this.state.value} onChange={this.handleChange} />
+          <input className="form-control form-control-error" type="text" value={name} onChange={this.handleChange} />
         </label>
         <label>
           Phone:
-          <InputMask className="form-control" {...this.props} defaultValue={this.state.phone} onChange={this.phoneChange} mask="+7 (999) 999-9999" maskChar=" " alwaysShowMask="true" />
+          <InputMask className="form-control" {...this.props} defaultValue={phone} onChange={this.phoneChange} mask="+7 (999) 999-9999" maskChar=" " alwaysShowMask="true" />
         </label>
         <label>
           Birthday:
           <InputMask className="form-control" {...this.props}
-          defaultValue={this.state.birthday} onChange={this.birthdayChange}
+          defaultValue={birthday} onChange={this.birthdayChange}
           mask="99.99.9999" maskChar=" "
           placeholder="01.01.1970"/>
         </label>
         <label>
         Должность:
-        <select className="form-control" value={this.state.role} onChange={this.roleChange}>
+        <select className="form-control" value={role} onChange={this.roleChange}>
           <option value="waiter">Официант</option>
           <option value="driver">Водитель</option>
           <option value="cook">Повар</option>
@@ -115,8 +117,8 @@ class Employee extends Component {
           <input
             name="isGoing"
             type="checkbox"
-            value={this.state.isArchive ? 'on' : 'off'}
-            checked={this.state.isArchive}
+            value={isArchive ? 'on' : 'off'}
+            checked={isArchive}
             onChange={this.isArchiveChange}
              />
         </label>
