@@ -26,12 +26,13 @@ export default function userstate(state = initialState, action) {
 
     case 'EDIT_EMPLOYEE':
       //let obj = Object.assign([], state.employees)
-      let obj = [...state.employees]
+      /*let obj = [...state.employees]
       console.log("state.employees")
       console.log(state)
       console.log("obj")
-      console.log(...obj)
-      let res = obj.map(item => {
+      console.log(...obj)*/
+      console.log(action.state)
+      let res = [...state.employees].map(item => {
         if (+item.id === +action.state.id) {
           item.name = action.state.name;
           item.phone= action.state.phone;
@@ -42,6 +43,7 @@ export default function userstate(state = initialState, action) {
         }
         return item;
       });
+      /*
       let employee = state.employees.filter(a => {
         return +a.id === +action.state.id;
       })[0];
@@ -52,8 +54,8 @@ export default function userstate(state = initialState, action) {
       employee.role = action.state.role;
       employee.isArchive =  action.state.isArchive;
       employee.id = action.state.id;
-
-      let employee2 = {
+*/
+  /*    let employee2 = {
         name: action.state.name,
         phone: action.state.phone,
         birthday: action.state.birthday,
@@ -66,7 +68,7 @@ export default function userstate(state = initialState, action) {
 
       let obj2 = Object.assign([...state.employees], employee)
       console.log("e2")
-      console.log(employee2)
+      console.log(employee2)*/
       /*return {
         ...state,
         employees: Object.assign([...state.employees], employee)
