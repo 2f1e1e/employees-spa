@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addEmployee } from '../actions';
+import * as action from '../actions';
 import { Link } from 'react-router-dom';
 import { Redirect, withRouter } from 'react-router-dom';
 
@@ -56,7 +56,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     onTodoClick: state => {
-      dispatch(addEmployee(state))
+      dispatch(action.addEmployee(state))
       console.log("dsf")
       console.log(state)
     }

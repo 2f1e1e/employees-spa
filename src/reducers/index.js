@@ -1,7 +1,12 @@
 import employees from '../employees';
 //import update from 'react-addons-update';
 
-const initialState = {employees};
+const initialState = {
+  employees,
+  roleFilter: "all",
+  isArchiveFilter: false,
+  sortBy: "none"
+};
 
 export default function userstate(state = initialState, action) {
   console.log(action);
@@ -18,6 +23,15 @@ export default function userstate(state = initialState, action) {
       isArchive: action.state.isArchive,
       id: action.state.lastId
     }]}
+
+    case 'SET_ROLE_FILTER':
+      return {...state, roleFilter: action.filter}
+
+    case 'SET_ARCHIVE_FILTER':
+      return {...state, isArchiveFilter: action.filter}
+
+    case 'SET_SORTING':
+      return {...state, sortBy: action.sortBy}
 
     case 'SORT_EMPLOYEE':
 

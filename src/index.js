@@ -13,7 +13,6 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import editEmployeeContainer from './containers/editEmployeeContainer';
 
-
 const store = configureStore();
 
 ReactDOM.render(
@@ -30,6 +29,11 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();
+
+let log = () => {
+  console.log(process.env);
+}
+log();
 /*
 <Switch>
 <Route exact path="/" component={employeesContainer} />

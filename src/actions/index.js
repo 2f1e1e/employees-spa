@@ -11,3 +11,18 @@ export const setVisibilityFilter = (filter) => ({
   type: 'SET_VISIBILITY_FILTER',
   filter
 })
+
+export const setRoleFilter = (filter) => ({
+  type: 'SET_ROLE_FILTER',
+  filter
+})
+
+export const setIsArchiveFilter = (filter) => ({
+  type: 'SET_ARCHIVE_FILTER',
+  filter
+})
+
+export const setSorting = (sortBy) => ({
+  type: 'SET_SORTING',
+  sortBy
+})
