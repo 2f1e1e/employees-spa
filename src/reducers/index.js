@@ -25,20 +25,27 @@ export default function userstate(state = initialState, action) {
     }]}
 
     case 'EDIT_EMPLOYEE':
-      let obj = Object.assign([], state.employees)
-      /*obj.map(item => {
+      //let obj = Object.assign([], state.employees)
+      let obj = [...state.employees]
+      console.log("state.employees")
+      console.log(state)
+      console.log("obj")
+      console.log(...obj)
+      let res = obj.map(item => {
         if (+item.id === +action.state.id) {
-          item.name = action.state.name,
-          phone: action.state.phone,
-          birthday: action.state.birthday,
-          role: action.state.role,
-          isArchive: action.state.isArchive,
-          id: action.state.id
+          item.name = action.state.name;
+          item.phone= action.state.phone;
+          item.birthday= action.state.birthday;
+          item.role = action.state.role;
+          item.isArchive =  action.state.isArchive;
+          item.id = action.state.id;
         }
-      });*/
+        return item;
+      });
       let employee = state.employees.filter(a => {
         return +a.id === +action.state.id;
       })[0];
+
       employee.name = action.state.name;
       employee.phone= action.state.phone;
       employee.birthday= action.state.birthday;
@@ -46,12 +53,26 @@ export default function userstate(state = initialState, action) {
       employee.isArchive =  action.state.isArchive;
       employee.id = action.state.id;
 
-      console.log("user")
-      console.log(employee)
-      let obj2 = Object.assign(obj, employee)
-      console.log("obj2")
-      console.log(obj2)
-      return {...state, employees: obj2}
+      let employee2 = {
+        name: action.state.name,
+        phone: action.state.phone,
+        birthday: action.state.birthday,
+        role: action.state.role,
+        isArchive: action.state.isArchive,
+        id: action.state.id
+      }
+      console.log("e1")
+      console.log(res)
+
+      let obj2 = Object.assign([...state.employees], employee)
+      console.log("e2")
+      console.log(employee2)
+      /*return {
+        ...state,
+        employees: Object.assign([...state.employees], employee)
+      }*/
+      return {...state, employees: res}
+
 
     case 'SET_ROLE_FILTER':
       return {...state, roleFilter: action.filter}
