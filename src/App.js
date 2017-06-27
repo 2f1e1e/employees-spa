@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Link } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Employees</h2>
+            <ul>
+              <li><Link to="/new" activeClassName="active">New user</Link></li>
+              <li><Link to="/" activeClassName="active">Users</Link></li>
+            </ul>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        {this.props.children}
       </div>
     );
   }
 }
 
 export default App;
+
+//<img src={logo} className="App-logo" alt="logo" />

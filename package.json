@@ -1,10 +1,17 @@
 {
   "name": "employees-spa",
   "version": "0.1.0",
+  "homepage": "https://2f1e1e.github.io/employees-spa/",
   "private": true,
   "dependencies": {
+    "bootstrap": "^3.3.7",
+    "gh-pages": "^1.0.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-input-mask": "^0.9.1",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.0"
   },
   "devDependencies": {
     "autoprefixer": "7.1.0",
@@ -47,7 +54,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
