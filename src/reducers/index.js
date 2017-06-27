@@ -11,6 +11,7 @@ const initialState = {
 export default function userstate(state = initialState, action) {
   console.log(action);
   switch (action.type) {
+
     case 'GET_ALL_EMPLOYEES':
       return { ...state, employees }
 
@@ -25,14 +26,7 @@ export default function userstate(state = initialState, action) {
     }]}
 
     case 'EDIT_EMPLOYEE':
-      //let obj = Object.assign([], state.employees)
-      /*let obj = [...state.employees]
-      console.log("state.employees")
-      console.log(state)
-      console.log("obj")
-      console.log(...obj)*/
-      console.log(action.state)
-      let res = [...state.employees].map(item => {
+      const editedEmployee = [...state.employees].map(item => {
         if (+item.id === +action.state.id) {
           item.name = action.state.name;
           item.phone= action.state.phone;
@@ -43,38 +37,8 @@ export default function userstate(state = initialState, action) {
         }
         return item;
       });
-      /*
-      let employee = state.employees.filter(a => {
-        return +a.id === +action.state.id;
-      })[0];
 
-      employee.name = action.state.name;
-      employee.phone= action.state.phone;
-      employee.birthday= action.state.birthday;
-      employee.role = action.state.role;
-      employee.isArchive =  action.state.isArchive;
-      employee.id = action.state.id;
-*/
-  /*    let employee2 = {
-        name: action.state.name,
-        phone: action.state.phone,
-        birthday: action.state.birthday,
-        role: action.state.role,
-        isArchive: action.state.isArchive,
-        id: action.state.id
-      }
-      console.log("e1")
-      console.log(res)
-
-      let obj2 = Object.assign([...state.employees], employee)
-      console.log("e2")
-      console.log(employee2)*/
-      /*return {
-        ...state,
-        employees: Object.assign([...state.employees], employee)
-      }*/
-      return {...state, employees: res}
-
+      return {...state, employees: editedEmployee}
 
     case 'SET_ROLE_FILTER':
       return {...state, roleFilter: action.filter}
@@ -85,27 +49,6 @@ export default function userstate(state = initialState, action) {
     case 'SET_SORTING':
       return {...state, sortBy: action.sortBy}
 
-    case 'SORT_EMPLOYEE':
-
-    let emp2 = [];
-    Object.assign(emp2, state.employees);
-    console.log("")
-    console.log(emp2.sort((a, b) => {
-      return a.name > b.name ? 1 : a.name < b.name ? -1 : 0;
-    }))
-
-    return {...state, employees: emp2}
-    /*
-    let emp = update(employees, {$set:
-        state.employees.sort((a, b) => {
-          return a.name > b.name ? 1 : a.name < b.name ? -1 : 0;
-        })});
-    */
-    /*  return  { ...state,
-        employees: state.employees.sort((a, b) => {
-          return a.name > b.name ? 1 : a.name < b.name ? -1 : 0;
-        })}
-    */
     default:
       return state;
   }

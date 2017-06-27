@@ -1,0 +1,52 @@
+.btn {
+  padding: 6px 12px;
+  margin: 15px;
+  overflow:hidden;
+  color:#222;
+  border:3px solid #222;
+  background-color:transparent;
+  cursor:pointer;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #111;
+  background-color: #e9e9e9;
+  border-color: #111;
+}
+a.btn.btn-primary:active {
+  color: #111;
+  background-color: #e9e9e9;
+  border-color: #111;
+}
+button.btn.btn-primary:active {
+  color: #111;
+  background-color: #e9e9e9;
+  border-color: #111;
+  outline: 0;
+}
+
+.pane {
+  /*display: flex;
+	justify-content: space-between;
+  align-items: center;*/
+  padding: 10px;
+}
+
+form.form-horizontal {
+  padding: 30px;
+}
+
+.form-inline .form-group {
+    /*display: inline-block;*/
+    margin-bottom: 0;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.form-inline .form-group label {
+    margin-right: 10px;
+}

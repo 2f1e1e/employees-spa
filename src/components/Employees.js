@@ -11,7 +11,7 @@ class Employees extends Component {
     return (
       <div className="App">
       <Pane />
-      <Table headers = {headers} data = {this.props.employees} />
+      <Table headers={headers} employees={this.props.employees} />
         {this.props.children}
       </div>
     );

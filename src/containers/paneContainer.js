@@ -10,22 +10,18 @@ const mapDispatchToProps = dispatch => {
     onRoleChange: role => {
       dispatch(action.setRoleFilter(role));
       console.log("onRoleChange")
-      console.log(role)
     },
     onIsArchiveChange: isArchive => {
       dispatch(action.setIsArchiveFilter(isArchive));
       console.log("onIsArchiveChange")
-      console.log(isArchive)
     },
     onSortingChange: filter => {
       dispatch(action.setSorting(filter));
-      console.log("onSortingChange")
     }
   }
 }
 
 const mapStateToProps = state => {
-  const { roleFilter, isArchiveFilter, sorting, employees } = state;
   return {
     state
   }
