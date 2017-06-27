@@ -29,21 +29,29 @@ const defaultRole = [
 const mapStateToProps = (state, ownProps, props) => {
   console.log("own")
   console.log(props);
-  if (ownProps.match.path === '/new') {
-    console.log("new entry")
-  }
+
   let employee = state.employees.filter(a => {
     return +a.id === +ownProps.match.params.id;
   })[0];
   let lastId = Math.max.apply(null,state.employees.map(a => {return a.id})) + 1;
-  return {
-    employees: state.employees,
-    user: employee,
-    role: defaultRole,
-    lastId: lastId
-    //selectedRole: employee.role,
-    //todos: getVisibleTodos(state.todos, state.visibilityFilter)
+  if (ownProps.match.path === '/new') {
+    console.log("new entry")
+    return {
+      newEntry: ownProps.match.path === '/new' ? true : false,
+      lastId: lastId,
+  };
+  } else {
+    return {
+      employees: state.employees,
+      user: employee,
+      role: defaultRole,
+      lastId: lastId,
+      newEntry: ownProps.match.path === '/new' ? true : false
+      //selectedRole: employee.role,
+      //todos: getVisibleTodos(state.todos, state.visibilityFilter)
+    }
   }
+
 }
 
 const mapDispatchToProps = (dispatch, props) => {

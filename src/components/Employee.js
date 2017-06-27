@@ -15,9 +15,9 @@ class Employee extends Component {
       isArchive: this.props.user ? this.props.user.isArchive : false,
       role: this.props.user ? this.props.user.role : 'waiter',
       noErrors: {
-        name: false,
-        phone: false,
-        birthday: false
+        name: true,
+        phone: true,
+        birthday: true
       },
       id: this.props.user ? this.props.user.id : this.props.lastId,
       lastId: this.props.lastId,
@@ -40,9 +40,11 @@ class Employee extends Component {
   };
 
   validator = (value) => {
+    console.log("validator");
+    console.log(value)
     console.log(this.state.noErrors);
     //console.log({...this.state.noNameErrors, name: false});
-    if (value.length < 3 && this.state.secondTry) {
+    if (value.length < 3 ) {
       this.setState({noErrors: {...this.state.noErrors, name: false}});
       console.log(this.state.noErrors);
     } else {
@@ -109,29 +111,27 @@ class Employee extends Component {
  }
 
  handleSubmit(event) {
+   let inputClassName = {};
    const noErrors = this.state.noErrors;
    this.resetClassNames();
    event.preventDefault();
-   console.log("second")
    this.setState({secondTry: true});
-
+   this.validator(this.state.name);
    if (noErrors.name && noErrors.phone && noErrors.birthday) {
      this.props.onTodoClick(this.state);
      this.context.router.history.push('/');
    } else {
-     console.log("else");
      console.log(this.state.inputClassName);
      if (!noErrors.name) {
-       this.setClassName("name","has-error");
+       inputClassName.name = "has-error";
      }
      if (!noErrors.phone) {
-       this.setClassName("phone","has-error");
+       inputClassName.phone = "has-error";
      }
-     /*if (!noErrors.birthday) {
-       this.setClassName("birthday","has-error");
-     }*/
-
-
+     if (!noErrors.birthday) {
+       inputClassName.birthday = "has-error";
+     }
+     this.setState({ inputClassName });
    }
   }
 
@@ -150,7 +150,17 @@ class Employee extends Component {
  }
 
   componentDidMount() {
-
+    if (this.props.newEntry) {
+      this.setState({
+        noErrors: {
+          name: false,
+          phone: false,
+          birthday: false
+        },
+        name: '',
+        //birth
+      });
+    }
   }
 
   render() {

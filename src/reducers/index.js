@@ -12,7 +12,7 @@ export default function userstate(state = initialState, action) {
   console.log(action);
   switch (action.type) {
     case 'GET_ALL_EMPLOYEES':
-      return { ...state, employees: action.payload }
+      return { ...state, employees }
 
     case 'ADD_EMPLOYEE':
       return {...state, employees: [...state.employees, {

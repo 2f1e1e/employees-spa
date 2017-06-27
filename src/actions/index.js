@@ -1,3 +1,8 @@
+export const newEntry = (state) => ({
+  type: 'GET_ALL_EMPLOYEES',
+  state
+})
+
 export const addEmployee = (state) => ({
   type: 'ADD_EMPLOYEE',
   state
