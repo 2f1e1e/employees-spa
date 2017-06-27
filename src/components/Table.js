@@ -35,7 +35,7 @@ export default class Table extends Component {
           return (
             <div className="datagrid">
 
-              <table>
+              <table className="table table-hover">
               <thead>
                 <tr>
                   {this.props.headers.map((item, idx) => {

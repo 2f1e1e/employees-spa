@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import InputMask from 'react-input-mask';
+import { Link } from 'react-router-dom';
 
 class Employee extends Component {
 
@@ -62,15 +63,16 @@ class Employee extends Component {
     this.setState({name: event.target.value, value: event.target.value});
     console.log(this.state);
  }
-
+ phoneValidator = (phone) => {
+   if (/^\+\d\s\(\d{3}\)\s\d{3}-\d{4}$/gm.test(phone)) {
+     this.setState({noErrors: {...this.state.noErrors, phone: true}});
+     console.log("correct number");
+   }
+ }
  phoneChange = (event) => {
    this.resetClassNames();
    console.log(event.target.value);
-   if (/^\+\d\s\(\d{3}\)\s\d{3}-\d{4}$/gm.test(event.target.value)) {
-     this.setState({noErrors: {...this.state.noErrors, phone: true}});
-     console.log("correct number");
-
-   }
+   this.phoneValidator(event.target.value)
    this.setState({phone: event.target.value});
  }
 
@@ -117,6 +119,7 @@ class Employee extends Component {
    event.preventDefault();
    this.setState({secondTry: true});
    this.validator(this.state.name);
+   this.phoneValidator(this.state.phone)
    if (noErrors.name && noErrors.phone && noErrors.birthday) {
      this.props.onTodoClick(this.state);
      this.context.router.history.push('/');
@@ -157,7 +160,7 @@ class Employee extends Component {
           phone: false,
           birthday: false
         },
-        name: '',
+        //name: '',
         //birth
       });
     }
@@ -239,6 +242,12 @@ class Employee extends Component {
         className="btn btn-primary">
         Сохранить
       </button>
+      <Link
+        type="button"
+        className="btn btn-primary"
+        to="/">
+        Назад
+      </Link>
       </div>
 
     )
