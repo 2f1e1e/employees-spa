@@ -186,8 +186,8 @@ export default class Employee extends Component {
          </div>
        </div>
        <div className="form-group">
-         <label className="col-sm-2 control-label">В архиве: </label>
-         <div className="col-sm-10">
+         <div className="form-checkbox">
+           <label className="col-sm-2">В архиве:</label>
            <input
              name="isGoing"
              type="checkbox"
@@ -197,20 +197,23 @@ export default class Employee extends Component {
               />
          </div>
        </div>
+       <div className="form-group">
+         <button
+           onClick={(e) => {this.handleSubmit(e)}}
+           type="button"
+           className="btn btn-primary btn-edit">
+           Сохранить
+         </button>
+         <Link
+           type="button"
+           className="btn btn-primary btn-edit"
+           to="/">
+           Назад
+         </Link>
+       </div>
      </form>
 
-      <button
-        onClick={(e) => {this.handleSubmit(e)}}
-        type="button"
-        className="btn btn-primary">
-        Сохранить
-      </button>
-      <Link
-        type="button"
-        className="btn btn-primary"
-        to="/">
-        Назад
-      </Link>
+
       </div>
     )
   }

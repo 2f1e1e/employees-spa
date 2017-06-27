@@ -31,13 +31,15 @@ export default class Table extends Component {
         </select>
         </div>
         <div className="form-group">
-        <label htmlFor="focusedInput">В архиве</label>
-        <input
-          name="isGoing"
-          type="checkbox"
-          checked={this.props.state.isArchiveFilter}
-          onChange={e => this.props.onIsArchiveChange(e.target.checked)}
-           />
+          <div className="form-checkbox">
+            <label htmlFor="focusedInput">В архиве</label>
+            <input
+              name="isGoing"
+              type="checkbox"
+              checked={this.props.state.isArchiveFilter}
+              onChange={e => this.props.onIsArchiveChange(e.target.checked)}
+               />
+          </div>
         </div>
           <div className="form-group">
         <Link
