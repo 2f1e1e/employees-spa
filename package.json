@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "gh-pages": "^1.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-input-mask": "^0.9.1",
