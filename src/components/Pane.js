@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './Pane.css';
 
 export default class Table extends Component {
 
   render() {
-    console.log("staet");
-    console.log(this.props)
+
     return (
       <div className="pane">
       <form className="form-inline">
